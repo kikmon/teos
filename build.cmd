@@ -10,13 +10,9 @@ rem directory, i.e. one level higher.
 rem ***************************************************************************
 
 setlocal
+REM SETLOCAL EnableDelayedExpansion
 
 cd /d "%~dp0"
-
-pushd
-cd ..
-set PATH=%CD%\huc\bin;%PATH%
-popd
 set PCE_INCLUDE=%CD%
 
 pceas -raw -m -l 2 -S teos.s
