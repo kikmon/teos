@@ -43,15 +43,11 @@ jobs:
         with:
           name: teos-windows-2022
       - name: publish package
-        uses: Wandalen/wretry.action@v1.0.25
+        uses: pyTooling/Actions/releaser@r0
         with:
-          action: pyTooling/Actions/releaser@r0
-          with: |
-            token: ${{ secrets.GITHUB_TOKEN }}
-            tag: ${{ github.ref_name }}
-            rm: true # do not keep old latest artifacts
-            files: |
-              *.zip
-          attempt_limit: 3
-          attempt_delay: 3000
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+          rm: true # do not keep old latest artifacts
+          files: |
+            *.zip
 
