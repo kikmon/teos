@@ -23,13 +23,17 @@ jobs:
       - name: Build on Windows
         run: |
           .\build.cmd
-      - name: Archive toolchain
+      - name: Archive Build Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: teos-${{ matrix.os }}
           path: |
             teos.pce
             TBED/**/*.*
+            LICENSE.TXT
+            LICENSE_1_0.TXT
+            README.md
+
 
   publish_package:
     runs-on: ubuntu-latest
@@ -42,6 +46,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: teos-windows-2022
+          path: teos-windows-2022
       - name: publish package
         uses: pyTooling/Actions/releaser@r0
         with:
@@ -49,5 +54,5 @@ jobs:
           tag: ${{ github.ref_name }}
           rm: true # do not keep old latest artifacts
           files: |
-            *.zip
+            teos-windows-2022/*
 
