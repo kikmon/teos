@@ -1,3 +1,5 @@
+---
+
 name: build
 
 # Github Actions aren't supporting anchors yet
